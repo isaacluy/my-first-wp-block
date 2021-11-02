@@ -5,10 +5,11 @@ import "./editor.scss";
 
 export default function Edit(/* { attributes, setAttributes } */) {
 	const blockProps = useBlockProps();
+	const ALLOWED_BLOCKS = ["core/image", "core/paragraph"];
 
 	return (
 		<section {...blockProps}>
-			<InnerBlocks />
+			<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 		</section>
 	);
 }
