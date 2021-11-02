@@ -5,8 +5,8 @@ export default function save(/*{ attributes }*/) {
 	const blockProps = useBlockProps.save();
 
 	return (
-		<div {...blockProps}>
+		<section {...blockProps}>
 			<InnerBlocks.Content />
-		</div>
+		</section>
 	);
 }

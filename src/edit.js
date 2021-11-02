@@ -5,11 +5,17 @@ import "./editor.scss";
 
 export default function Edit(/* { attributes, setAttributes } */) {
 	const blockProps = useBlockProps();
-	const ALLOWED_BLOCKS = ["core/image", "core/paragraph"];
+	// const ALLOWED_BLOCKS = ["core/image", "core/paragraph"];
+	const MY_TEMPLATE = [
+		["core/image", {}],
+		["core/heading", { placeholder: "<Planeta> Favorable" }],
+		["core/paragraph", { placeholder: "Favorable" }],
+	];
+	// const MY_TEMPLATE = [["core/columns", {}]];
 
 	return (
 		<section {...blockProps}>
-			<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+			<InnerBlocks template={MY_TEMPLATE} templateLock="all" />
 		</section>
 	);
 }
