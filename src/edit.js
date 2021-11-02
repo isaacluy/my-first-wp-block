@@ -1,16 +1,24 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
-import { TextControl } from "@wordpress/components";
+import { Placeholder, TextControl } from "@wordpress/components";
 import "./editor.scss";
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, isSelected, setAttributes }) {
 	return (
 		<div {...useBlockProps()}>
-			<TextControl
-				label={__("Message", "gutenpride")}
-				value={attributes.message}
-				onChange={(val) => setAttributes({ message: val })}
-			/>
+			{attributes.message && !isSelected ? (
+				<div>{attributes.message}</div>
+			) : (
+				<Placeholder
+					label={__("My First Block", "my-first-block")}
+					instructions={__("Add your message", "my-first-block")}
+				>
+					<TextControl
+						value={attributes.message}
+						onChange={(val) => setAttributes({ message: val })}
+					/>
+				</Placeholder>
+			)}
 		</div>
 	);
 }
