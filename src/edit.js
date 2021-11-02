@@ -5,17 +5,60 @@ import "./editor.scss";
 
 export default function Edit(/* { attributes, setAttributes } */) {
 	const blockProps = useBlockProps();
-	// const ALLOWED_BLOCKS = ["core/image", "core/paragraph"];
-	const MY_TEMPLATE = [
-		["core/image", {}],
-		["core/heading", { placeholder: "<Planeta> Favorable" }],
-		["core/paragraph", { placeholder: "Favorable" }],
+	const FAVORABLE_DESFAVORABLE = [
+		[
+			"core/columns",
+			{ className: "mb-4 lg:flex lg:p-0 lg:space-x-4" },
+			[
+				[
+					"core/column",
+					{
+						className:
+							"w-full h-auto p-8 mb-4 bg-white rounded-xl space-y-4 shadow lg:w-1/2 lg:mb-0",
+						anchor: "favorable",
+					},
+					[
+						[
+							"core/heading",
+							{ placeholder: "<Planeta> Favorable", anchor: "favorable" },
+						],
+						[
+							"core/paragraph",
+							{
+								placeholder:
+									"Texto que habla sobre cuando el planeta está favorable...",
+							},
+						],
+					],
+				],
+				[
+					"core/column",
+					{
+						className:
+							"w-full h-auto p-8 mb-4 bg-white rounded-xl space-y-4 shadow lg:w-1/2 lg:mb-0",
+						anchor: "desfavorable",
+					},
+					[
+						[
+							"core/heading",
+							{ placeholder: "<Planeta> Desfavorable", anchor: "desfavorable" },
+						],
+						[
+							"core/paragraph",
+							{
+								placeholder:
+									"Texto que habla sobre cuando el planeta está desfavorable...",
+							},
+						],
+					],
+				],
+			],
+		],
 	];
-	// const MY_TEMPLATE = [["core/columns", {}]];
 
 	return (
-		<section {...blockProps}>
-			<InnerBlocks template={MY_TEMPLATE} templateLock="all" />
+		<section {...blockProps} id="grahas-page-block">
+			<InnerBlocks template={FAVORABLE_DESFAVORABLE} templateLock="all" />
 		</section>
 	);
 }
